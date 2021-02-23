@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+
+const INITIAL_STATE = [
+  { id: 1, baslik: "Alisveris Yap", tamamlandi: false },
+  { id: 2, baslik: "Fatura ode", tamamlandi: true },
+];
 
 function App() {
+  const [liste, setListe] = useState(INITIAL_STATE);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Yapılacaklar Listesi</h1>
+      <div className="ekleme_formu">
+        <input placeholer="listeye ekle" />
+        <button>Ekle</button>
+      </div>
+      <div className="liste">
+        {liste.map((item) => (
+          <div className={item.tamamlandi ? "yapildi" : ""}>{item.baslik}</div>
+        ))}
+      </div>
+      <button className="temizle">Tamamlananları Temizle</button>
     </div>
   );
 }
