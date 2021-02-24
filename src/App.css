@@ -5,38 +5,40 @@
   text-align: center;
 }
 
-.ekleme_formu input,
-.ekleme_formu button,
-.temizle {
+.adding_form input,
+.adding_form button,
+.clearButton {
   padding: 5px;
   border: 0;
   outline: 0;
   font-size: 16px;
 }
 
-.ekleme_formu input {
+.adding_form input {
   background: #e1e1e2;
 }
 
-.ekleme_formu button,
-.temizle {
+.adding_form button,
+.clearButton {
   background: #333;
   color: white;
+  cursor: pointer;
 }
 
-.liste {
+.taskList {
   padding: 20px 0;
 }
 
-.liste > div {
+.taskList > div {
   padding: 8px 0;
   border-bottom: 1px solid #ccc;
+  cursor: pointer;
 }
 
-.liste > div:last-child {
+.taskList > div:last-child {
   border-bottom: 0;
 }
 
-.yapildi {
+.completed {
   text-decoration: line-through;
 }

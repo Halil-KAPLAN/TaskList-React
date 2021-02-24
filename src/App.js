@@ -2,26 +2,57 @@ import React, { useState } from "react";
 import "./App.css";
 
 const INITIAL_STATE = [
-  { id: 1, baslik: "Alisveris Yap", tamamlandi: false },
-  { id: 2, baslik: "Fatura ode", tamamlandi: true },
+  { id: 1, taskName: "Shopping", completed: false },
+  { id: 2, taskName: "Pay bill", completed: true },
 ];
 
 function App() {
-  const [liste, setListe] = useState(INITIAL_STATE);
+  const [list, setList] = useState(INITIAL_STATE);
+  const [newTask, setNewTask] = useState("");
+
+  const addNew = (title) => {
+    if (title === "") return;
+    setList([...list, { id: Date.now(), taskName: title, completed: false }]);
+    setNewTask("");
+  };
+
+  const markCompleted = (itemId) => {
+    setList(
+      list.map((el) =>
+        el.id === itemId ? { ...el, completed: !el.completed } : el
+      )
+    );
+  };
+
+  const clearCompleted = () => {
+    setList(list.filter((item) => !item.completed));
+  };
 
   return (
     <div className="App">
-      <h1>Yapılacaklar Listesi</h1>
-      <div className="ekleme_formu">
-        <input placeholer="listeye ekle" />
-        <button>Ekle</button>
+      <h1>Task List</h1>
+      <div className="adding_form">
+        <input
+          value={newTask}
+          onChange={(event) => setNewTask(event.target.value)}
+          placeholer="Add to list"
+        />
+        <button onClick={() => addNew(newTask)}>Add</button>
       </div>
-      <div className="liste">
-        {liste.map((item) => (
-          <div className={item.tamamlandi ? "yapildi" : ""}>{item.baslik}</div>
+      <div className="taskList">
+        {list.map((item, index) => (
+          <div
+            key={index}
+            onClick={() => markCompleted(item.id)}
+            className={item.completed ? "completed" : ""}
+          >
+            {item.taskName}
+          </div>
         ))}
       </div>
-      <button className="temizle">Tamamlananları Temizle</button>
+      <button onClick={() => clearCompleted()} className="clearButton">
+        Clear Completed
+      </button>
     </div>
   );
 }
