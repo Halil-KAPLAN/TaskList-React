@@ -4,6 +4,8 @@
 
 I made a simple example for the useState hook in react.
 
+![alt text](src/screenshot/taskList_SS.JPG?raw=true)
+
 ## Installation
 
 NodeJS must be installed for the project to work.
