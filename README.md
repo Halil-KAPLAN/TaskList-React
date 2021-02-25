@@ -4,7 +4,7 @@
 
 I made a simple example for the useState hook in react.
 
-![alt text](src/screenshot/taskList_SS.JPG?raw=true)
+![alt text](src/screenshot/preview.gif?raw=true)
 
 ## Installation
 
